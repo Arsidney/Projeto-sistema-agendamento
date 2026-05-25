@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Agendamento - Maio 2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="loginScreen" class="login-page-bg">
+        <div class="login-container">
+            <div class="login-box">
+                <h2>🎯 Sistema de Agendamento</h2>
+                <div class="user-type">
+                    <input type="radio" id="prestador" name="userType" value="prestador" checked>
+                    <label for="prestador">Prestador</label>
+                </div>
+                <div class="form-group">
+                    <label for="username">Usuário:</label>
+                    <input type="text" id="username" placeholder="Digite seu usuário">
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha:</label>
+                    <input type="password" id="password" placeholder="Digite sua senha">
+                </div>
+                <button class="btn" onclick="login()">Entrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mainApp" class="container hidden">
+        <div class="header">
+            <h1>📅 Agenda - Maio 2026</h1>
+            <div class="user-info">
+                <span id="currentUser"></span>
+                <button class="logout-btn" onclick="logout()">Sair</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="form-section">
+                    <h3>📝 Agendamento</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Cliente:</label>
+                            <input type="text" id="clienteNome" placeholder="Nome do cliente">
+                        </div>
+                        <div class="form-group">
+                            <label>Serviço:</label>
+                            <select id="servico">
+                                <option value="">Selecione...</option>
+                                <option value="corte-masculino">Corte Masculino - R$35</option>
+                                <option value="corte-feminino">Corte Feminino - R$45</option>
+                                <option value="barba">Barba - R$25</option>
+                                <option value="escova">Escova - R$30</option>
+                                <option value="corte-barba">Corte + Barba - R$55</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Data:</label>
+                            <input type="date" id="dataAgendamento">
+                        </div>
+                        <div class="form-group">
+                            <label>Horário:</label>
+                            <select id="horario">
+                                <option value="">Selecione...</option>
+                                <option value="07:00">07:00</option>
+                                <option value="08:00">08:00</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option disabled>────────</option>
+                                <option disabled>🍽️ Horário de almoço</option>
+                                <option disabled>11:00 às 12:00</option>
+                                <option disabled>────────</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="18:00">18:00</option>
+                                <option value="19:00">19:00</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Status:</label>
+                        <select id="status" class="status-select">
+                            <option value="agendado">Agendado</option>
+                            <option value="reagendado">Reagendado</option>
+                            <option value="em-atendimento">Em Atendimento</option>
+                            <option value="concluido">Concluído</option>
+                            <option value="cancelado">Cancelado</option>
+                        </select>
+                    </div>
+                    <button class="btn" onclick="adicionarAgendamento()">Adicionar</button>
+
+                    <div class="imagem-agendamento">
+                        <img src="img/agenda.png" alt="Agenda">
+                    </div>
+                </div>
+            </div>
+
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button class="nav-btn" onclick="previousMonth()">← Anterior</button>
+                    <div class="month-year" id="monthYear">Maio 2026</div>
+                    <button class="nav-btn" onclick="nextMonth()">Próximo →</button>
+                </div>
+                <div class="calendar-grid" id="calendarGrid"></div>
+            </div>
+        </div>
+
+        <div class="appointments-panel">
+            <h3>📋 Atendimentos do Dia</h3>
+            <div id="appointmentsList"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
